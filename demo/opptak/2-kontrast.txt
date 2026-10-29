@@ -1,0 +1,34 @@
+
+🎃 Er formaterBookingForLonn trygg å fjerne?
+
+[38;5;208m→ finn_referanser[0m[90m {"navn":"formaterBookingForLonn"}[0m
+[32m  ✓ 147 tegn tilbake[0m
+[38;5;208m→ sok_i_repo[0m[90m {"monster":"formaterBookingForLonn"}[0m
+[32m  ✓ 226 tegn tilbake[0m
+[38;5;208m→ sok_i_repo[0m[90m {"monster":"lonn"}[0m
+[32m  ✓ 426 tegn tilbake[0m
+[38;5;208m→ hent_git_historikk[0m[90m {"fil":"src/services/bookingService.js"}[0m
+[32m  ✓ 1026 tegn tilbake[0m
+[38;5;208m→ les_fil[0m[90m {"fil":"src/services/bookingService.js"}[0m
+[32m  ✓ 2804 tegn tilbake[0m
+## Nekrolog: formaterBookingForLonn
+- **Dom:** Behold
+- **Hva det var:** En funksjon i `src/services/bookingService.js` som gjør en booking om til en lønnspost. Posten har `ansattId`, `dato`, `rom` og `timer`. Den er eksportert fra modulen.
+- **Sist rørt:** Funksjonen kom inn 2021-10-11 i commit c2899c3 av Kari Råtnebakk, altså for ca. 5 år siden. Det er ikke undersøkt om den er endret siden. Filen som helhet ble sist endret 2026-08-19 av Jonas Benknuser (feilmelding ved dobbeltbooking), og den endringen gjelder ikke denne funksjonen.
+- **Bevis:**
+  - `finn_referanser` ga 0 kall i dette repoet. Treffene var bare eksportlinjen (`bookingService.js:81`) og README.
+  - `sok_i_repo` på funksjonsnavnet ga bare definisjonen (linje 52), eksporten og README-linje 24.
+  - README linje 24–25 sier at funksjonen «brukes av lønnsintegrasjonen (eget repo, `lonn-integrasjon`)». Der står det også: «Ikke endre signaturen uten å snakke med dem.»
+  - Kommentaren i koden (linje 50–51) sier det samme: «Ikke fjern eller endre signaturen uten å avklare med dem.»
+  - Commit-meldingen fra 2021 sier «for lønnsintegrasjonen».
+- **Usikkerhet:**
+  - Jeg har ikke tilgang til repoet `lonn-integrasjon`, så jeg kan ikke bekrefte at det fortsatt kaller funksjonen.
+  - Jeg vet ikke om integrasjonen fortsatt er i drift.
+  - At det ikke finnes interne kall er forventet, fordi funksjonen er laget for eksternt bruk.
+
+Funksjonen ser død ut innenfra, men den er dokumentert som et eksternt grensesnitt. Den bør ikke fjernes før teamet bak `lonn-integrasjon` har bekreftet at den er ubrukt.
+
+## Skal IKKE fjernes
+- **`formaterBookingForLonn`** (`src/services/bookingService.js`): Den har 0 interne kall, men README og kodekommentar sier at den brukes av `lonn-integrasjon`. Fjerning kan ødelegge fakturering av interne prosjektrom.
+[90m
+3 runder, 5 verktøykall, 9951 tokens inn, 1162 tokens ut[0m

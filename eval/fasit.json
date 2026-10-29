@@ -1,0 +1,24 @@
+{
+  "merknad": "Fasit for hjemsokt-repo. trygt = kan begraves, usikkert = må avklares, felle = ser død ut men er i bruk.",
+  "oppgaver": [
+    {
+      "id": "sveip",
+      "oppgave": "Gå gjennom hele hjemsokt-repo og skriv en nekrolog for hvert funn du er trygg på. Husk å si hva som ikke bør fjernes.",
+      "trygt": ["legacyCsv", "lodash", "request", "sinon", "formaterDatoGammel", "grupperPerKontor|statistikkPerKontor", "sendSms", "erHelligdag|HELLIGDAGER_2021", "bookingerV1|v1-ruter"],
+      "usikkert": ["nyKalender", "eksternRabatt", "venteliste", "sendPaaminnelse", "eksporterTilOutlook"],
+      "feller": ["formaterBookingForLonn", "ryddGamleBookinger", "teams", "rimraf", "nodemon"]
+    },
+    {
+      "id": "pakker",
+      "oppgave": "Hvilke pakker i package.json brukes ikke?",
+      "trygt": ["lodash", "request", "sinon"],
+      "usikkert": ["moment"],
+      "feller": ["rimraf", "nodemon", "uuid", "dayjs", "supertest", "eslint-config-standard", "jest", "node-cron", "nodemailer", "express"]
+    },
+    {
+      "id": "lonn",
+      "oppgave": "Er formaterBookingForLonn trygg å fjerne?",
+      "forventet_dom": "Behold"
+    }
+  ]
+}

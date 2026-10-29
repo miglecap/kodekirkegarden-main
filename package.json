@@ -1,0 +1,16 @@
+{
+  "name": "kodekirkegarden",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "eval": "node eval/kjor.js",
+    "demo": "node src/demo.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.1.0"
+  },
+  "engines": {
+    "node": ">=20.12"
+  }
+}

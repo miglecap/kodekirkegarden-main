@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kodekirkegården · scenario walkthrough</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="logo">🪦</span>
+      <div>
+        <b>Kodekirkegården</b>
+        <span>Scenario: cleaning up Romvakt before the Node upgrade</span>
+      </div>
+    </div>
+    <ul class="legend" aria-label="Legend">
+      <li><i style="--c:#6aa9ff"></i>Human</li>
+      <li><i style="--c:#f08a24"></i>Agent</li>
+      <li><i style="--c:#4cd07d"></i>Safe</li>
+      <li><i style="--c:#f2c14e"></i>Needs a decision</li>
+      <li><i style="--c:#b58cff"></i>Keep</li>
+    </ul>
+  </header>
+
+  <section class="caption" aria-live="polite">
+    <div class="count" id="stepCount">1 / 19</div>
+    <div class="caption-text">
+      <h2 id="capTitle"></h2>
+      <p id="capText"></p>
+    </div>
+  </section>
+
+  <main class="grid">
+    <section class="panel flow">
+      <div class="panel-head">
+        <h3>Process flow</h3>
+        <button id="followBtn" class="chip-btn on" title="Camera follows the active step (F)">Follow</button>
+      </div>
+      <svg id="flow" viewBox="0 0 560 920" preserveAspectRatio="xMidYMin meet" role="img"
+           aria-label="Flowchart of the cleanup process"></svg>
+    </section>
+
+    <section class="right">
+      <div class="panel stage">
+        <nav class="tabs" id="tabs" role="tablist"></nav>
+        <div class="views" id="views">
+
+          <div class="view" data-view="context">
+            <div class="alerts">
+              <div class="alert a1 rv"><span class="ic">🔔</span><div><b>Security review</b><p><code>request</code> is deprecated. Reduce dependencies.</p></div></div>
+              <div class="alert a2 rv"><span class="ic">🚀</span><div><b>Sprint planning</b><p>Node upgrade and Postgres move planned for next sprint.</p></div></div>
+            </div>
+            <div class="persona rv">
+              <div class="avatar">J</div>
+              <div>
+                <b>Jonas Benknuser</b> inherited <b>Romvakt</b>, the internal room-booking service.
+                <p>Mona left in 2021. Petter moved teams in 2022. Nobody who wrote it is left.</p>
+              </div>
+            </div>
+            <h4 class="rv danger-h">Looks dead, but is not</h4>
+            <div class="traps">
+              <div class="trap rv"><code>formaterBookingForLonn</code><span>Used by another repo (payroll)</span></div>
+              <div class="trap rv"><code>ryddGamleBookinger</code><span>Only referenced by a config string</span></div>
+              <div class="trap rv"><code>plugins/teams.js</code><span>Loaded by dynamic <code>import()</code></span></div>
+              <div class="trap rv"><code>rimraf</code> · <code>nodemon</code><span>Only used in npm scripts</span></div>
+            </div>
+          </div>
+
+          <div class="view" data-view="repo">
+            <div class="tree" id="tree"></div>
+          </div>
+
+          <div class="view" data-view="packages">
+            <table class="pkgs"><thead><tr><th>Package</th><th>Where it is used</th><th>Verdict</th></tr></thead><tbody id="pkgBody"></tbody></table>
+            <p class="note">Commented-out code does not count as use. Counted from <code>avhengigheter</code>.</p>
+          </div>
+
+          <div class="view" data-view="findings">
+            <div class="cols" id="cols">
+              <div class="col safe" data-col="safe"><h4><i></i>Trygt <small>safe to bury</small></h4><div class="cards"></div></div>
+              <div class="col unsure" data-col="unsure"><h4><i></i>Usikkert <small>decide first</small></h4><div class="cards"></div></div>
+              <div class="col keep" data-col="keep"><h4><i></i>Behold <small>do not remove</small></h4><div class="cards"></div></div>
+            </div>
+          </div>
+
+          <div class="view" data-view="actions">
+            <div class="block" id="blkPr">
+              <h4>Pull request <small>chore: remove dead code</small></h4>
+              <div class="diff" id="diff"></div>
+            </div>
+            <div class="block" id="blkChecks">
+              <h4>Checks <small>illustrative</small></h4>
+              <ul class="checks">
+                <li id="chkTest"><span class="spin"></span><code>npm test</code></li>
+                <li id="chkLint"><span class="spin"></span><code>npm run lint</code></li>
+              </ul>
+            </div>
+            <div class="block" id="blkMsgs">
+              <h4>Questions to owners <small>illustrative replies</small></h4>
+              <div class="msgs" id="msgs"></div>
+            </div>
+            <div class="block" id="blkQa">
+              <h4>Control question</h4>
+              <div class="qa">
+                <div class="q">Er <code>formaterBookingForLonn</code> trygg å fjerne?</div>
+                <div class="a" id="qaAnswer">
+                  <span class="verdict keep">Dom: Behold</span>
+                  <ul>
+                    <li>No callers in this repo, but README lines 24–25 say the payroll integration uses it.</li>
+                    <li>A code comment (lines 50–51) says: do not remove without checking.</li>
+                    <li>Created for the payroll integration (commit <code>c2899c3</code>).</li>
+                    <li>«0 references here» does not mean dead.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="block" id="blkDoc">
+              <h4>Note left in the repo</h4>
+              <pre class="docnote">// KEEP: used by the lonn-integrasjon repo (payroll invoicing).
+// Confirmed as in use by the agent's review. See README.</pre>
+            </div>
+          </div>
+
+          <div class="view" data-view="result">
+            <div class="stats" id="stats"></div>
+            <p class="note">Tool-call count is measured from the project's sweep run. The rest is the scenario outcome.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="panel term">
+        <div class="term-bar"><i></i><i></i><i></i><span>terminal</span></div>
+        <div id="term" class="term-body" aria-live="off"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="controls">
+    <div class="buttons">
+      <button id="btnRestart" title="Restart (Home)">⏮</button>
+      <button id="btnPrev" title="Previous (←)">◀</button>
+      <button id="btnPlay" class="primary" title="Play / pause (Space)">▶ Play</button>
+      <button id="btnNext" title="Next (→)">▶|</button>
+      <label class="speed">Speed
+        <select id="speed">
+          <option value="0.5">0.5×</option>
+          <option value="0.75">0.75×</option>
+          <option value="1" selected>1×</option>
+          <option value="1.5">1.5×</option>
+          <option value="2">2×</option>
+        </select>
+      </label>
+    </div>
+    <ol class="timeline" id="timeline"></ol>
+    <p class="disclaimer">
+      Fictional scenario. Agent tool calls are taken from real runs of this project.
+      PR contents, test results and replies from finance and the product owner are illustrative.
+    </p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="flow.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

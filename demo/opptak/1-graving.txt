@@ -1,0 +1,46 @@
+
+🎃 Finn ut om src/utils/legacyCsv.js er død kode, og skriv en nekrolog for den.
+
+[38;5;208m→ list_filer[0m[90m {}[0m
+[32m  ✓ 702 tegn tilbake[0m
+[38;5;208m→ avhengigheter[0m[90m {}[0m
+[32m  ✓ 1618 tegn tilbake[0m
+[38;5;208m→ finn_referanser[0m[90m {"navn":"legacyCsv"}[0m
+[32m  ✓ 173 tegn tilbake[0m
+[38;5;208m→ hent_git_historikk[0m[90m {"fil":"src/utils/legacyCsv.js"}[0m
+[32m  ✓ 506 tegn tilbake[0m
+[38;5;208m→ les_fil[0m[90m {"fil":"src/utils/legacyCsv.js"}[0m
+[32m  ✓ 779 tegn tilbake[0m
+[90mSjekker indirekte bruk.[0m
+[38;5;208m→ sok_i_repo[0m[90m {"monster":"csv"}[0m
+[32m  ✓ 285 tegn tilbake[0m
+[38;5;208m→ sok_i_repo[0m[90m {"monster":"eksporterCsv|lesCsv|økonomi|moment","regex":true}[0m
+[32m  ✓ 713 tegn tilbake[0m
+[38;5;208m→ les_fil[0m[90m {"fil":"README.md"}[0m
+[32m  ✓ 762 tegn tilbake[0m
+[38;5;208m→ les_fil[0m[90m {"fil":"config/default.js"}[0m
+[32m  ✓ 863 tegn tilbake[0m
+## Nekrolog: src/utils/legacyCsv.js
+- **Dom:** Trygt (med forbehold om at økonomi ikke har bekreftet noe)
+- **Hva det var:** CSV-eksport av bookinger til økonomi (`eksporterCsv`) og en CSV-leser (`lesCsv`). Filen er markert som erstattet av lønnsintegrasjonen.
+- **Sist rørt:** 2021-02-15 av Mona Mumiehaug, for 5 år siden. Hun sluttet i 2021. Første commit var 2020-06-09, «CSV-eksport for økonomi». Siste commit hadde meldingen «Merk CSV-eksport som utgående».
+- **Bevis:**
+  - `finn_referanser("legacyCsv")` ga 0 referanser.
+  - `sok_i_repo("csv")` ga bare treff inne i selve filen.
+  - Søk etter `eksporterCsv` og `lesCsv` ga bare definisjonen og eksporten i filen selv.
+  - Config: `config/default.js` har bare jobben `rydding.ryddGamleBookinger` og pluginen `teams`. Ingen av dem peker på CSV.
+  - npm-scripts: `avhengigheter` viser at ingen script bruker filen.
+  - README nevner ikke CSV-eksporten. Eksporten til lønn gjelder `formaterBookingForLonn` i `bookingService.js`, ikke denne filen.
+  - TODO i filen (2021-02-15): «slett når økonomi bekrefter at de ikke trenger denne». Den er over 5 år gammel.
+  - `moment` brukes bare av denne filen i uutkommentert kode. `dato.js` har kun en utkommentert referanse. `moment` kan altså fjernes fra `package.json` sammen med filen.
+- **Usikkerhet:**
+  - Jeg ser ikke om økonomi har bekreftet at de ikke trenger eksporten. Det må avklares med dem.
+  - Jeg kan ikke sjekke andre repoer. `lonn-integrasjon` er nevnt i README, men jeg har ikke tilgang til det. Jeg kan ikke utelukke at noen der eller et annet sted henter inn filen via sti.
+  - Jeg kan ikke se manuelle kjøringer, for eksempel `node -e` på en server.
+  - Dynamisk import: jeg fant ingen. Plugin- og jobblasterne har jeg bare sett via config og README, ikke lest.
+
+## Skal IKKE fjernes
+- **`formaterBookingForLonn` i `src/services/bookingService.js`:** Den kan se ubrukt ut her, men README sier at lønnsintegrasjonen i et eget repo (`lonn-integrasjon`) bruker den. Ikke rør signaturen. Jeg har ikke undersøkt selve funksjonen i dette svaret.
+- **`src/plugins/teams.js` og `src/jobber/rydding.js`:** De har ingen direkte kallere, men lastes dynamisk via strenger i `config/default.js`.
+[90m
+3 runder, 9 verktøykall, 12820 tokens inn, 1551 tokens ut[0m

@@ -1,0 +1,344 @@
+{
+  "repo": "romvakt",
+  "merknad": "Mona Mumiehaug sluttet i 2021. Petter Gravøl gikk til et annet team i 2022.",
+  "filer": {
+    "package.json": [
+      {
+        "hash": "c9e8627",
+        "dato": "2026-09-14",
+        "forfatter": "Jonas Benknuser",
+        "melding": "Bump express og nodemailer"
+      },
+      {
+        "hash": "98d5c34",
+        "dato": "2024-02-07",
+        "forfatter": "Siri Spindelstad",
+        "melding": "Legg til supertest"
+      },
+      {
+        "hash": "8f79119",
+        "dato": "2021-05-03",
+        "forfatter": "Mona Mumiehaug",
+        "melding": "Legg til request for SMS-varsling"
+      },
+      {
+        "hash": "62e85b8",
+        "dato": "2021-01-19",
+        "forfatter": "Mona Mumiehaug",
+        "melding": "Legg til moment for CSV-eksport"
+      },
+      {
+        "hash": "5455766",
+        "dato": "2020-03-02",
+        "forfatter": "Ola Kistesnekker",
+        "melding": "Første versjon av romvakt"
+      }
+    ],
+    ".eslintrc.json": [
+      {
+        "hash": "24d050d",
+        "dato": "2022-08-30",
+        "forfatter": "Siri Spindelstad",
+        "melding": "Bytt til eslint-config-standard"
+      }
+    ],
+    "README.md": [
+      {
+        "hash": "71d16ec",
+        "dato": "2024-02-07",
+        "forfatter": "Siri Spindelstad",
+        "melding": "Dokumenter jobber og plugins"
+      },
+      {
+        "hash": "23e091b",
+        "dato": "2021-10-11",
+        "forfatter": "Kari Råtnebakk",
+        "melding": "Nevn lønnsintegrasjonen i README"
+      }
+    ],
+    "config/default.js": [
+      {
+        "hash": "97f5d0d",
+        "dato": "2025-11-20",
+        "forfatter": "Jonas Benknuser",
+        "melding": "Legg til eksternRabatt-flagg (av inntil videre)"
+      },
+      {
+        "hash": "18af4d6",
+        "dato": "2024-02-05",
+        "forfatter": "Siri Spindelstad",
+        "melding": "Flytt jobber og plugins til config"
+      },
+      {
+        "hash": "9ccb916",
+        "dato": "2021-09-01",
+        "forfatter": "Petter Gravøl",
+        "melding": "Flagg for ny kalender og venteliste"
+      },
+      {
+        "hash": "251c311",
+        "dato": "2020-11-16",
+        "forfatter": "Ola Kistesnekker",
+        "melding": "Slå på LDAP"
+      }
+    ],
+    "src/server.js": [
+      {
+        "hash": "11878f7",
+        "dato": "2024-02-05",
+        "forfatter": "Siri Spindelstad",
+        "melding": "Last plugins og jobber fra config"
+      },
+      {
+        "hash": "3d22a3d",
+        "dato": "2021-03-22",
+        "forfatter": "Ola Kistesnekker",
+        "melding": "Fjern v1-ruter (kommentert ut inntil videre)"
+      },
+      {
+        "hash": "d4cc1c7",
+        "dato": "2020-03-02",
+        "forfatter": "Ola Kistesnekker",
+        "melding": "Første versjon av romvakt"
+      }
+    ],
+    "src/db.js": [
+      {
+        "hash": "b69a565",
+        "dato": "2025-04-28",
+        "forfatter": "Jonas Benknuser",
+        "melding": "Legg til Krypten i Trondheim"
+      },
+      {
+        "hash": "5cd0821",
+        "dato": "2020-03-02",
+        "forfatter": "Ola Kistesnekker",
+        "melding": "Første versjon av romvakt"
+      }
+    ],
+    "src/routes/bookinger.js": [
+      {
+        "hash": "eac4a7f",
+        "dato": "2026-08-19",
+        "forfatter": "Jonas Benknuser",
+        "melding": "Returner 409 ved kollisjon"
+      },
+      {
+        "hash": "2e2b8de",
+        "dato": "2022-01-10",
+        "forfatter": "Kari Råtnebakk",
+        "melding": "Send bekreftelse ved booking"
+      }
+    ],
+    "src/routes/rom.js": [
+      {
+        "hash": "c776b1a",
+        "dato": "2025-04-28",
+        "forfatter": "Jonas Benknuser",
+        "melding": "Filtrer ledige rom på kontor"
+      },
+      {
+        "hash": "43e6ad6",
+        "dato": "2021-09-01",
+        "forfatter": "Petter Gravøl",
+        "melding": "Kalender-endepunkt bak flagg"
+      }
+    ],
+    "src/services/bookingService.js": [
+      {
+        "hash": "8d6e508",
+        "dato": "2026-08-19",
+        "forfatter": "Jonas Benknuser",
+        "melding": "Bedre feilmelding ved dobbeltbooking"
+      },
+      {
+        "hash": "c2899c3",
+        "dato": "2021-10-11",
+        "forfatter": "Kari Råtnebakk",
+        "melding": "formaterBookingForLonn for lønnsintegrasjonen"
+      },
+      {
+        "hash": "dd32a16",
+        "dato": "2021-03-12",
+        "forfatter": "Ola Kistesnekker",
+        "melding": "Outlook-eksport (wip)"
+      },
+      {
+        "hash": "6858dc0",
+        "dato": "2021-02-24",
+        "forfatter": "Mona Mumiehaug",
+        "melding": "Statistikk per kontor, kommentert ut i påvente av avklaring"
+      },
+      {
+        "hash": "2cb0dce",
+        "dato": "2021-01-08",
+        "forfatter": "Petter Gravøl",
+        "melding": "beregnRabatt for eksterne kunder"
+      }
+    ],
+    "src/services/varsling.js": [
+      {
+        "hash": "718f6d9",
+        "dato": "2022-01-10",
+        "forfatter": "Kari Råtnebakk",
+        "melding": "E-postbekreftelse via nodemailer"
+      },
+      {
+        "hash": "1b01899",
+        "dato": "2021-09-20",
+        "forfatter": "Petter Gravøl",
+        "melding": "Stub for påminnelser"
+      },
+      {
+        "hash": "9d80e38",
+        "dato": "2021-06-02",
+        "forfatter": "Mona Mumiehaug",
+        "melding": "Forbered SMS-varsling"
+      }
+    ],
+    "src/middleware/auth.js": [
+      {
+        "hash": "d33a9dc",
+        "dato": "2020-11-16",
+        "forfatter": "Ola Kistesnekker",
+        "melding": "LDAP-headere fra proxy"
+      },
+      {
+        "hash": "b5f4c5e",
+        "dato": "2019-12-04",
+        "forfatter": "Ola Kistesnekker",
+        "melding": "Basic auth for prototypen"
+      }
+    ],
+    "src/jobber/index.js": [
+      {
+        "hash": "88b6bd6",
+        "dato": "2024-02-05",
+        "forfatter": "Siri Spindelstad",
+        "melding": "Jobbrunner som leser handler fra config"
+      }
+    ],
+    "src/jobber/rydding.js": [
+      {
+        "hash": "ef735ac",
+        "dato": "2024-02-05",
+        "forfatter": "Siri Spindelstad",
+        "melding": "Nattlig rydding av bookinger eldre enn 90 dager"
+      }
+    ],
+    "src/plugins/index.js": [
+      {
+        "hash": "6b3639f",
+        "dato": "2024-02-06",
+        "forfatter": "Siri Spindelstad",
+        "melding": "Dynamisk lasting av plugins"
+      }
+    ],
+    "src/plugins/teams.js": [
+      {
+        "hash": "316393a",
+        "dato": "2025-09-02",
+        "forfatter": "Jonas Benknuser",
+        "melding": "Teams-varsel via webhook"
+      }
+    ],
+    "src/kalender/nyKalender.js": [
+      {
+        "hash": "16aa3f6",
+        "dato": "2021-11-04",
+        "forfatter": "Petter Gravøl",
+        "melding": "Ukevisning for ny kalender (pilot)"
+      },
+      {
+        "hash": "c82ee8f",
+        "dato": "2021-09-01",
+        "forfatter": "Petter Gravøl",
+        "melding": "Start på ny kalender"
+      }
+    ],
+    "src/utils/dato.js": [
+      {
+        "hash": "882176e",
+        "dato": "2025-04-28",
+        "forfatter": "Jonas Benknuser",
+        "melding": "Rett overlapp-sjekk ved helt like tider"
+      },
+      {
+        "hash": "aafd744",
+        "dato": "2021-02-01",
+        "forfatter": "Mona Mumiehaug",
+        "melding": "Helligdager 2021, bytt fra moment til dayjs"
+      }
+    ],
+    "src/utils/logger.js": [
+      {
+        "hash": "8593c9a",
+        "dato": "2020-03-02",
+        "forfatter": "Ola Kistesnekker",
+        "melding": "Første versjon av romvakt"
+      }
+    ],
+    "src/utils/legacyCsv.js": [
+      {
+        "hash": "4b228c3",
+        "dato": "2021-02-15",
+        "forfatter": "Mona Mumiehaug",
+        "melding": "Merk CSV-eksport som utgående"
+      },
+      {
+        "hash": "9660d0b",
+        "dato": "2020-06-09",
+        "forfatter": "Mona Mumiehaug",
+        "melding": "CSV-eksport for økonomi"
+      }
+    ],
+    "test/bookingService.test.js": [
+      {
+        "hash": "0e3207c",
+        "dato": "2026-08-19",
+        "forfatter": "Jonas Benknuser",
+        "melding": "Test for dobbeltbooking"
+      },
+      {
+        "hash": "4f651e7",
+        "dato": "2021-09-01",
+        "forfatter": "Petter Gravøl",
+        "melding": "Tester for venteliste (skippet)"
+      },
+      {
+        "hash": "3e5c367",
+        "dato": "2021-04-08",
+        "forfatter": "Ola Kistesnekker",
+        "melding": "Skip sommertidstest midlertidig"
+      }
+    ],
+    "test/varsling.test.js": [
+      {
+        "hash": "1dfa449",
+        "dato": "2022-01-10",
+        "forfatter": "Kari Råtnebakk",
+        "melding": "Test for e-postbekreftelse"
+      },
+      {
+        "hash": "1d8ff25",
+        "dato": "2021-06-02",
+        "forfatter": "Mona Mumiehaug",
+        "melding": "Placeholder for SMS-test"
+      }
+    ],
+    "test/rom.test.js": [
+      {
+        "hash": "4fcc3c5",
+        "dato": "2024-02-07",
+        "forfatter": "Siri Spindelstad",
+        "melding": "Helsesjekk-test"
+      },
+      {
+        "hash": "93cfbde",
+        "dato": "2021-11-04",
+        "forfatter": "Petter Gravøl",
+        "melding": "Kalendertest (skippet til flagget er på)"
+      }
+    ]
+  }
+}
